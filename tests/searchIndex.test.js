@@ -10,23 +10,22 @@ const {
 // const createIndexTheLongDeclaration = wholeImport.createIndex;
 // console.log(wholeImport);
 
-describe("Search Index", () => {
-  let index;
+describe("Search Index", () => {});
+let index;
 
-  beforeEach(() => {
-    index = createIndex();
-  });
+beforeEach(() => {
+  index = createIndex();
+});
 
-
-  it.only("should add a new page to the index", () => {
-    //arrange
-    const exampleUrl = "https://www.example.com";
-    //act
-    addPageToIndex(
-      index,
-      exampleUrl,
-      "This is a sample web page about dogs. This web page talks about dogs a lot. dogs"
-    );
+it.only("should add a new page to the index", () => {
+  //arrange
+  const exampleUrl = "https://www.example.com";
+  //act
+  addPageToIndex(
+    index,
+    exampleUrl,
+    "This is a sample web page about dogs. This web page talks about dogs a lot. dogs"
+  );
   it("should add a new page to the index", () => {
     //arrange
     const exampleUrl = "https://www.example.com";
