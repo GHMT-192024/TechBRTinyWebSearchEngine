@@ -17,6 +17,7 @@ describe("Search Index", () => {
     index = createIndex();
   });
 
+
   it.only("should add a new page to the index", () => {
     //arrange
     const exampleUrl = "https://www.example.com";
@@ -26,6 +27,11 @@ describe("Search Index", () => {
       exampleUrl,
       "This is a sample web page about dogs. This web page talks about dogs a lot. dogs"
     );
+  it("should add a new page to the index", () => {
+    //arrange
+    const exampleUrl = "https://www.example.com";
+    //act
+    addPageToIndex(index, exampleUrl, "This is a sample web page about dogs");
     //assert
     expect(getPagesForKeyword(index, "dogs")).toContain(exampleUrl);
   });
