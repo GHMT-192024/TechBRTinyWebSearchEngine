@@ -6,7 +6,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "jest --watch-all",
+    "coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
