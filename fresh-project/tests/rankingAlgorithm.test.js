@@ -4,14 +4,12 @@ const {
   createIndex,
   addPageToIndex,
   getPageIndex,
-} = require("../src/searchIndex.js"); // Import getPageIndex
-// Construct the absolute path to searchAlgorithm.js
+} = require("../src/searchIndex.js");
 const searchAlgorithmPath = path.resolve(
   __dirname,
   "../src/searchAlgorithm.js"
 );
 const { search } = require(searchAlgorithmPath);
-
 const { rankSearchResults } = require("../src/rankingAlgorithm.js");
 
 describe("Ranking Algorithm", () => {
@@ -43,7 +41,7 @@ describe("Ranking Algorithm", () => {
 
   it("should rank results based on keyword frequencies", () => {
     console.log("Index before search:", index);
-    const searchResults = search(index, "cats");
+    const searchResults = search(index, "cats"); // Default OR
     const rankedResults = rankSearchResults(index, "cats", searchResults);
 
     expect(rankedResults[0]).toBe("https://www.example.com/cats");
@@ -51,8 +49,8 @@ describe("Ranking Algorithm", () => {
   });
 
   it("should rank pages with more keyword matches higher", () => {
-    console.log("Index before search:", index); // Add this line
-    const searchResults = search(index, "cats dogs");
+    console.log("Index before search:", index);
+    const searchResults = search(index, "cats dogs"); // Default OR
     const rankedResults = rankSearchResults(index, "cats dogs", searchResults);
 
     expect(rankedResults[0]).toBe("https://www.example.com/cats-and-dogs");
@@ -61,14 +59,14 @@ describe("Ranking Algorithm", () => {
   });
 
   it("should return an empty array if there are no matches", () => {
-    const searchResults = search(index, "birds");
+    const searchResults = search(index, "birds"); // Default OR (will return [])
     const rankedResults = rankSearchResults(index, "birds", searchResults);
 
     expect(rankedResults).toEqual([]);
   });
 
   it("should handle ties in ranking", () => {
-    const searchResults = search(index, "machine learning");
+    const searchResults = search(index, "machine learning"); // Default OR
     const rankedResults = rankSearchResults(
       index,
       "machine learning",
